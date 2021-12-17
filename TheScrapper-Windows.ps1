@@ -1,15 +1,15 @@
 #PS1
 #"STN-TheScrapper - Windows"
 #__author__ = "Kartavya Trivedi"
-#__version__ = "1.0"
-#__date__ = "2021-12-15"
+#__version__ = "2.0"
+#__date__ = "2021-12-16"
 
 
-Write-Host "____ ___ _  _    _ _  _ ____          ___ _  _ ____ ____ ____ ____ ____ ___  ___  ____ ____ " -ForegroundColor Green
-Write-Host "[__   |  |\ |    | |\ | |       __     |  |__| |___ [__  |    |__/ |__| |__] |__] |___ |__/ " -ForegroundColor Green
-Write-Host "___]  |  | \|    | | \| |___           |  |  | |___ ___] |___ |  \ |  | |    |    |___ |  \ " -ForegroundColor Green
-Write-Host " "
-Write-Host "  Version 1.0, Kartavya Trivedi" -ForegroundColor Green
+# Write-Host "____ ___ _  _    _ _  _ ____          ___ _  _ ____ ____ ____ ____ ____ ___  ___  ____ ____ " -ForegroundColor Green
+# Write-Host "[__   |  |\ |    | |\ | |       __     |  |__| |___ [__  |    |__/ |__| |__] |__] |___ |__/ " -ForegroundColor Green
+# Write-Host "___]  |  | \|    | | \| |___           |  |  | |___ ___] |___ |  \ |  | |    |    |___ |  \ " -ForegroundColor Green
+# Write-Host " "
+# Write-Host "  Version 2.0, Kartavya Trivedi" -ForegroundColor Green
 
 Get-ChildItem 'C:\' -rec -force -include *.jar -ea 0 | ForEach-Object {select-string "JndiLookup.class" $_} | Select-Object -exp Path
 #powershell.exe -encoded ZwBjAGkAIAAnAEMAOgBcACcAIAAtAHIAZQBjACAALQBmAG8AcgBjAGUAIAAtAGkAbgBjAGwAdQBkAGUAIAAqAC4AagBhAHIAIAAtAGUAYQAgADAAIAB8ACAAZgBvAHIAZQBhAGMAaAAgAHsAcwBlAGwAZQBjAHQALQBzAHQAcgBpAG4AZwAgACcASgBuAGQAaQBMAG8AbwBrAHUAcAAuAGMAbABhAHMAcwAnACAAfQAgAHwAIABzAGUAbABlAGMAdAAgAC0AZQB4AHAAIABQAGEAdABoAA==
@@ -17,12 +17,13 @@ Get-ChildItem 'C:\' -rec -force -include *.jar -ea 0 | ForEach-Object {select-st
 #gci 'C:\' -rec -force -include *.jar -ea 0 | foreach {select-string "JndiLookup.class" $_} | select -exp Path
 
 #Let's scan the drivers for the presence of Log4jjar files
+$hostname = $env:COMPUTERNAME
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $TheScrapper_LogFolder = "C:\"
-$TheScrapper_log4jCsv = "$TheScrapper_LogFolder\log4j.csv"
-$TheScrapper_TargetManifestFile = "$TheScrapper_LogFolder\log4j-manifest.txt"
-$TheScrapper_ManifestCsv = "$TheScrapper_LogFolder\log4j-manifest.csv"
+$TheScrapper_log4jCsv = "$TheScrapper_LogFolder\$hostname-log4j.csv"
+$TheScrapper_TargetManifestFile = "$TheScrapper_LogFolder\$hostname-log4j-manifest.txt"
+$TheScrapper_ManifestCsv = "$TheScrapper_LogFolder\$hostname-log4j-manifest.csv"
 $jndiCsv = "$TheScrapper_LogFolder\log4j-jndi.csv"
 $log4Filter = "log4j*.jar"
 $jarFiles = Get-PSDrive | Where-Object { $_.Name.length -eq 1 } | Select-Object -ExpandProperty Root | Get-ChildItem -File -Recurse -Filter $log4Filter -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
