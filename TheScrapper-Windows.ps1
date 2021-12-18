@@ -11,7 +11,7 @@
 # Write-Host " "
 # Write-Host "  Version 2.0, Kartavya Trivedi" -ForegroundColor Green
 
-Get-ChildItem 'C:\' -rec -force -include *.jar -ea 0 | ForEach-Object {select-string "JndiLookup.class" $_} | Select-Object -exp Path
+Get-ChildItem 'C:\' -rec -include *.jar -ea 0 | ForEach-Object {select-string "JndiLookup.class" $_} | Select-Object -exp Path
 #powershell.exe -encoded ZwBjAGkAIAAnAEMAOgBcACcAIAAtAHIAZQBjACAALQBmAG8AcgBjAGUAIAAtAGkAbgBjAGwAdQBkAGUAIAAqAC4AagBhAHIAIAAtAGUAYQAgADAAIAB8ACAAZgBvAHIAZQBhAGMAaAAgAHsAcwBlAGwAZQBjAHQALQBzAHQAcgBpAG4AZwAgACcASgBuAGQAaQBMAG8AbwBrAHUAcAAuAGMAbABhAHMAcwAnACAAfQAgAHwAIABzAGUAbABlAGMAdAAgAC0AZQB4AHAAIABQAGEAdABoAA==
 #$EncodedCommand = "Z2NpICdDOlwnIC1yZWMgLWZvcmNlIC1pbmNsdWRlICouamFyIC1lYSAwIHwgZm9yZWFjaCB7c2VsZWN0LXN0cmluZyAiSm5kaUxvb2t1cC5jbGFzcyIgJF99IHwgc2VsZWN0IC1leHAgUGF0aA=="
 #gci 'C:\' -rec -force -include *.jar -ea 0 | foreach {select-string "JndiLookup.class" $_} | select -exp Path
