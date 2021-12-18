@@ -54,4 +54,4 @@ foreach ($jarFile in $jarFiles) {
     }
     if ($null -eq $global:result) { $global:result = "Jndi class not found" }
 }
-Write-Output "Result: $global:result"
+Write-Output " $hostname Result: $global:result"
