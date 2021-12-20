@@ -93,3 +93,5 @@ wat-teller03.hq.money.int
 wat-teller04.hq.money.int
 wat-walkupwin.hq.money.int
 watmemsvc-01.hq.money.int
+
+590b96c24c152e8f3d4e8e0778c76467d1d97c3988f5d070816aa50c577bdfd4
